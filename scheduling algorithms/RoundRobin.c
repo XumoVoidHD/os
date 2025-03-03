@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#define MAX 100
 
 // Structure to represent a process
 typedef struct Process {
@@ -16,7 +17,7 @@ typedef struct Process {
 // Function to implement Round Robin scheduling
 void roundRobinScheduling(Process processes[], int n, int time_quantum) {
     // Create a queue to keep track of processes that need to be executed
-    int *queue = (int *)malloc(sizeof(int) * 100);
+    int *queue = (int *)malloc(sizeof(int) * MAX);
     int front = 0, rear = 0;
     
     // Initialize remaining time for all processes
@@ -53,7 +54,7 @@ void roundRobinScheduling(Process processes[], int n, int time_quantum) {
             
             // Add processes that have arrived at the new current time
             for (int i = 0; i < n; i++) {
-                if (processes[i].arrival_time <= current_time && processes[i].remaining_time > 0) {
+                if (processes[i].arrival_time == current_time && processes[i].remaining_time > 0) {
                     queue[rear] = i;
                     rear++;
                 }
