@@ -72,7 +72,7 @@ void roundRobinScheduling(Process processes[], int n, int time_quantum) {
         
         // Determine how much time this process will run
         int execution_time = (processes[idx].remaining_time < time_quantum) ? 
-                             processes[idx].remaining_time : time_quantum;
+                              processes[idx].remaining_time : time_quantum;
         
         // Execute the process for the determined time
         processes[idx].remaining_time -= execution_time;
