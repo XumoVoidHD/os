@@ -1,0 +1,32 @@
+Given n numbers, we rearrange the numbers such that all the odd numbers are placed first in an ascending order and 
+all the even numbers are placed after the odd numbers. The numbers 12, 17,21,30,44 are re-arranged as 17, 21,12,30,44. 
+Note that the positions of 30 and 44 remain the same. 30 occur in the fourth position in the original sequence and in 
+the re-arranged sequence. Similarly, 44 occur in the fifth position in the original sequence and in the re-arranged 
+sequence. Given a sequence of numbers, write a shell program to output the numbers whose positions remain the same in 
+both the original sequence and in the re-arranged sequence.
+ 
+Write a C program that implements the Banker’s Algorithm for deadlock avoidance. The program should prompt the user to 
+enter the number of processes and resources, followed by the maximum resource requirement, allocated resources, and 
+available resources. It should then determine whether the system is in a safe state by finding a safe sequence if one 
+exists or indicate that the system is in an unsafe state.                                                                                                                                                                                                                                                                 
+
+The program should take two integer inputs, x and y, representing the coordinates of a point in a 2D space. This 
+process should be repeated for 3 iterations. For each pair of coordinates, the program should identify and print the 
+quadrant in which the point lies. If the point lies on an axis, it should print “Point lies on an axis.” Next, the 
+program should identify the shape formed by the point: If x and y are both 0, it’s a dot. If either x or y is 0, it’s 
+a line. If both x and y are non-zero, it’s a rectangle. Finally, the program should print a pattern based on the 
+coordinates: For a dot, it should print a single asterisk (*). For a line, it should print a vertical line if x is 0, 
+or a horizontal line if y is 0. The length of the line should be equal to the non-zero coordinate. For a rectangle, it 
+should print a rectangle of asterisks, with the dimensions equal to the coordinates x and y.
+ 
+Write a C program that implements Non-Preemptive Priority Scheduling with Arrival Time, where processes are scheduled 
+based on priority and must wait until the CPU is free. If a process completes at time t, the next process should be 
+selected from those that arrived at or before t, prioritizing the one with the highest priority 
+(lowest priority number). The program should compute completion time, turnaround time, waiting time, average waiting 
+time, and average turnaround time. Implement the following functions:
+
+void getInput(): Accepts arrival time, burst time, and priority for all processes.
+void sortByArrival(): Sorts processes based on arrival time.
+int getNextProcess(): Returns the index of the next process to be scheduled based on priority and arrival constraints.
+void calculateTimes(): Computes completion time, turnaround time, and waiting time for all processes.
+void displayResults(): Displays process execution order along with all computed times.
