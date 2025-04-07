@@ -5,7 +5,7 @@
 
 #define N 5
 
-sem_t forks[N];         // One semaphore per fork
+sem_t forks[N];
 pthread_t philosophers[N];
 int philosopher_id[N];
 

@@ -52,17 +52,17 @@ void* consumer(void* arg) {
 }
 
 int main() {
-    pthread_t prod, cons;
+    pthread_t producer, consumer;
 
     sem_init(&empty, 0, BUFFER_SIZE);  // Initially all empty
     sem_init(&full, 0, 0);             // Initially no full slots
     pthread_mutex_init(&mutex, NULL);
 
-    pthread_create(&prod, NULL, producer, NULL);
-    pthread_create(&cons, NULL, consumer, NULL);
+    pthread_create(&producer, NULL, producer, NULL);
+    pthread_create(&consumer, NULL, consumer, NULL);
 
-    pthread_join(prod, NULL);
-    pthread_join(cons, NULL);
+    pthread_join(producer, NULL);
+    pthread_join(consumer, NULL);
 
     pthread_mutex_destroy(&mutex);
     sem_destroy(&empty);
