@@ -1,3 +1,57 @@
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <unistd.h>
+
+#define N 5
+
+sem_t forks[N];         // One semaphore per fork
+pthread_t philosophers[N];
+int philosopher_id[N];
+
+void* philosopher(void* num) {
+    int id = *(int*)num;
+    while (1) {
+        printf("Philosopher %d is thinking.\n", id);
+        sleep(1);  // Thinking
+
+        // Pick up left fork
+        sem_wait(&forks[id]);
+
+        // Pick up right fork (circular table)
+        sem_wait(&forks[(id + 1) % N]);
+
+        printf("Philosopher %d is eating.\n", id);
+        sleep(2);  // Eating
+
+        // Put down right fork
+        sem_post(&forks[(id + 1) % N]);
+
+        // Put down left fork
+        sem_post(&forks[id]);
+
+        printf("Philosopher %d finished eating.\n", id);
+    }
+}
+
+int main() {
+    for (int i = 0; i < N; i++) {
+        sem_init(&forks[i], 0, 1);
+        philosopher_id[i] = i;
+    }
+
+    for (int i = 0; i < N; i++) {
+        pthread_create(&philosophers[i], NULL, philosopher, &philosopher_id[i]);
+    }
+
+    for (int i = 0; i < N; i++) {
+        pthread_join(philosophers[i], NULL);
+    }
+
+    return 0;
+}
+
+
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
@@ -80,3 +134,6 @@ int main()
         pthread_join(thread_id[i], NULL);
     }
 }
+
+
+
